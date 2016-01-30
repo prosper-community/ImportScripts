@@ -53,6 +53,22 @@ var sources = {
 	}
 };
 
+var mappingTypes = {
+	Array: function(data, mapping) { 
+		var text = "";
+		for(var i = 0, ii = mapping.length; i < ii; i++)
+			text += " " + data[i];
+		return text;
+	}
+	, Number: function(data, index) { return data[index]; }
+	, Function: function(data, func) { return func(data); }
+};
+
+function main() {
+	processFolder();
+	processSheets();
+}
+
 function importSpreadSheet(path, sets, key) {
 	try {
 		var ssTarget = SpreadsheetApp.openByUrl(settings.targetSpreadSheetUrl);
@@ -111,6 +127,15 @@ function processFolder() {
 	}
 }
 
+function processSheets() {
+	for(var key in source) {
+		if(source[key].type != sourceType.urlSpreadSheet)
+			continue;
+		
+		importSpreadSheet(source[key].pathUrl, source[key], key);
+	}
+}
+
 function _clearArray(data) {
 	for(var i = 0, ii = data.length; i < ii; i++) {
 		if(!data[i])
@@ -122,10 +147,8 @@ function _clearArray(data) {
 function _mapColumnsAndTranslate(rowData, mappings, translateFrom) {
 	var result = [];
 	for(var i = 0, ii = mappings.length; i < ii; i++) {
-		var frm = mappings[i][0];
 		var to = mappings[i][1];
-		var text = rowData[frm];
-		Logger.log('from: '+frm+' to: '+to+' text: '+text);
+		var text = mappingTypes[mappings[i][0].constructor](rowData, mappings[i][1]);//rowData[frm];
 		
 		if(translateFrom)
 			text = LanguageApp.translate(text, translateFrom, settings.targetLanguage);
