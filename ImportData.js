@@ -27,6 +27,7 @@ var sources = {
 		, identifierIndex: 3
 		, mappings: [
 			[0,3] //Name
+			[[2,5]
 			//not sure, skipping, [2,12] //Type
 			, [2,10]//Services
 			, [3,5]//Address
@@ -89,6 +90,10 @@ function importSpreadSheet(path, sets, key) {
 	for(var i = start, ii = rowCount; i < ii; i++) {
 		var cols = sourceSheet.getRange(i+1, 1, 1, 50);
 		var vals = cols.getDisplayValues();
+		var isEmpty = vals.join('');
+		
+		if(isEmpty)
+			continue;
 		
 		for(var x = 0, xx = vals.length; x < xx; x++) {
 			var data = _mapColumnsAndTranslate(vals[x], sets.mappings, sets.translateFrom);
