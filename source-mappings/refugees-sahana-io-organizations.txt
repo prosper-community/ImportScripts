@@ -1,0 +1,18 @@
+---
+Name: Online Information Services
+Subsheet: False
+URL: 'https://docs.google.com/spreadsheets/d/1VExxd55_StCcEcWzWz8Yev3LLubOhmyE2iia1Gfm7MA/edit#gid=1955008659'
+Date: 01/02/2016
+---
+
+[columnID] - [columnName]
+
+[0] - Name
+[1] - Type
+[2] - Services
+[3] - Address
+[4] - Phone Number
+[5] - Email
+[6] - Facebook
+[7] - Website
+[8] - Last Updated

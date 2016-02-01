@@ -15,8 +15,8 @@ URL: https://docs.google.com/spreadsheets/d/1V3BUANVaLhPmoQAQOdrHebCH4_KzyJnjY99
 [7] - Solution
 [8] - Website
 [9] - Language(s)
-[10] - Country(ies)
-[11] - Town(s)
+[10] - Country
+[11] - City / Town(s)
 [12] - Address
 [13] - Latitude
 [14] - Longitude

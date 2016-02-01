@@ -1,0 +1,22 @@
+---
+Name: 1512 SBTF Daily Needs Phase II | Social Media Sites
+Subsheet: True
+Sheet GID: 1618921457
+Sheet Index: 4
+URL: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1618921457',
+---
+
+[columnID] - [columnName]
+
+[0] - ID
+[1] - Record Date
+[2] - Org Name
+[3] - English Name
+[4] - Description
+[5] - Main Language
+[6] - Base Country
+[7] - Location
+[8] - Media Type
+[9] - Link
+[10] - Members/Likes
+[11] - Status/last post

@@ -1,5 +1,6 @@
 var settings = {
 	targetLanguage: 'english',
+	// I updated this to be the new spreadsheet that I've created into which we'll import the sources below
 	targetSpreadSheetUrl: 'https://docs.google.com/spreadsheets/d/1V3BUANVaLhPmoQAQOdrHebCH4_KzyJnjY99M04AMazE',
 	toProcessPath: '0B3H4lorZl65edjY0TjhxZVBZNTg'//'ToProcess'//'https://drive.google.com/open?id=0B3H4lorZl65edjY0TjhxZVBZNTg',
 	processedPath: '0B3H4lorZl65eUGlpWUp5WjQ2bVk'//'Processed'//'https://drive.google.com/open?id=0B3H4lorZl65eUGlpWUp5WjQ2bVk'
@@ -7,7 +8,7 @@ var settings = {
 
 var sourceType = {
 	urlSpreadSheet: 1, //processUrlSpreadSheet
-	folderSpreadSheet: 2//processFolder
+	folderSpreadSheet: 2 //processFolder
 };
 
 var sources = {
@@ -25,24 +26,10 @@ var sources = {
 		]
 	}
 	*/
-	/*
-	'name': {
-		'Hamburger Fl�chtlings- und Willkommensinitiativen',
-		pathUrl: 'https://docs.google.com/spreadsheets/d/1tTEQT2bBv2HsTI-Zjpde2me5x3fWrWpxLq_WXWLJBEI/edit?ts=568a93db#gid=0',
-		type: sourceType.urlSpreadSheet,
-		translateFrom: 'german',
-		mappings: [
-			[sourceColumnIndex, destinationColumnIndex],
-			[0,0],
-			[1,1],
-			[2,2]
-		],
-		}
-	*/
 	'refugee-projects-form-responses': {
 		type: sourceType.urlSpreadSheet,
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1wYKZMMBerbWGFvwsOtra5jKt02IMwAwQDxWBurHTbSQ/edit#gid=1895427304',
-		// hasHeader: 1, // I'm not clear as to hasHeader is indicating given the numeric value
+		// hasHeader: 1, // I'm not clear as to what hasHeader is indicating given the numeric value
 		identifierIndex: 0,
 		subsheet: false, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
 		mappings: [
@@ -73,6 +60,129 @@ var sources = {
 			[24, 18],
 			[25, 27],
 			[26, 3]
+		]
+	},
+	'refugee-crisis-facebook-groups': {
+		type: sourceType.urlSpreadSheet,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1VF1cFpOfaInKhIxeRECbZyPbrt1_609HUZJt_8tFWCA/edit#gid=0',
+		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		mappings: [
+			[0, 2],
+			[1, 10],
+			[2, 16],
+			// [3, ], 'Group/Page', not needed
+			// [4, 29],  'Members/Likes', not needed
+			[5, 22]
+		]
+	},
+	'online-information-services': {
+		type: sourceType.urlSpreadSheet,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1nLiyn86UcJChxSgd8xz4WwWpz6fZRL2NLucaSE8adPg/edit#gid=0',
+		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		mappings: [
+			[0, 2],
+			[1, 16], // Append to 'Tags', destinationColumnIndex 16
+			[2, 8],
+			[3, 7],
+			[4, 29], // Append to 'Additional Info', destinationColumnIndex 29
+			[5, 3],
+			[6, 29] // Append to 'Additional Info', destinationColumnIndex 29
+
+		]
+	},
+	'sbtf-daily-needs-phase-ii--info-sources': {
+		type: sourceType.urlSpreadSheet,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1770681601',
+		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		identifierIndex: 7,
+		subsheet: true, // I've included a boolean that indicates is a subsheet, feel free to put it elsewhere
+		sheetGID: 1770681601, // I've included the GID here, feel free to place it elsewhere
+		sheetIndex: 1, // I've included the sheetIndex here, feel free to put it elsewhere
+		mappings: [
+			[0, 2],
+			[1, 3],
+			[2, 16],
+			[3, 10],
+			[4, 7],
+			// [5, ], 'Type of Source' is an open / closed boolean we don't need
+			// [6, ], 'Editing' is another data field we don't need
+			[7, 8]
+		]
+	},
+	'sbtf-daily-needs-phase-ii--tools': {
+		type: sourceType.urlSpreadSheet,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=374822050',
+		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		identifierIndex: 1,
+		subsheet: true, // I've included a boolean that indicates is a subsheet, feel free to put it elsewhere
+		sheetGID: 374822050, // I've included the GID here, feel free to place it elsewhere
+		sheetIndex: 2, // I've included the sheetIndex here, feel free to put it elsewhere
+		mappings: [
+			[0, 28],
+			[1, 0],
+			[2, 1],
+			[3, 2],
+			[4, 7],
+			[5, 9],
+			[6, 16], // 'Platforms', e.g. - Web, iOS, Android... Append to 'Tags'
+			[7, 21],
+			[8, 22],
+			[9, 8],
+			// [10, ], 'Android URL' - data not needed
+			// [11, ], 'Apple Store URL' - data not needed
+		]
+	},
+	'sbtf-daily-needs-phase-ii--facilities': {
+		type: sourceType.urlSpreadSheet,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1892610775',
+		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		identifierIndex: 1,
+		subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
+		sheetGID: 1892610775, // I've included the GID here, feel free to place it elsewhere
+		sheetIndex: 3, // As it currently stands, its index 3
+		mappings: [
+			[0, 28],
+			[1, 0],
+			[2, 1],
+			[3, 2],
+			[4, 15],
+			// [5, ], 'Free Internet' data field which is largely 'Unknown'
+			[6, 29], // 'Status' data field which is un-normalized, append to 'Additional Notes'
+			[7, 3],
+			[8, 10],
+			[9, 11],
+			[10, 29], // 'Location' which is un-normalized, append to 'Additional Notes'
+			[11, 12],
+			[12, 8],
+			[13, 29], // 'Comments' which should append to 'Additional Notes'
+			[14, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
+			[15, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
+			[16, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
+			[17, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
+			[18, 29] // 'Source #' provides links to info source, append to 'Additional Notes'
+		]
+	},
+	'sbtf-daily-needs-phase-ii--social-media-sites': {
+		type: sourceType.urlSpreadSheet,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1618921457',
+		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		identifierIndex: 0,
+		subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
+		sheetGID: 1618921457, // I've included the GID here, feel free to place it elsewhere
+		sheetIndex: 4, // As it currently stands, its index 4
+		mappings: [
+			[0, 0],
+			[1, 1],
+			[2, 3],
+			[3, 4],
+			[4, 7],
+			[5, 9],
+			[6, 10],
+			// [7, ], presents a 'media type' field which is useless for us
+			[8, 10],
+			[9, 22], // 141 of 217 entries are facebook links, we'll need to clean up the other links after import
+			// [10, ], this provides the number of 'Members/Likes', which is something we can call programatically later.
+			[11, 29] // Provides a 'status' field, which isn't useful for us now but is good to maintain in our 'Additional notes'
 		]
 	},
 	'sbtf-daily-needs-phase-ii--organizations': {
@@ -111,35 +221,23 @@ var sources = {
 			[24, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
 			[25, 31]  // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
 		]
-	}
-	'sahana': {
-		type: sourceType.folderSpreadSheet,
-		hasHeader: 1,
-		identifierIndex: 3,
-		mappings: [
-			[0,3], //Name
-			[2,5], //not sure, skipping, [2,12] //Type
-			[2,10], //Services
-			[3,5], //Address
-			//not sure, skipping, [5,]//Phone Number
-			[5,2], //Email
-			[6,15], //Facebook
-			[7,4], //Website
-			[8,0] //LastUpdated
-		]
 	},
-	'online_information': {
-		type: sourceType.folderSpreadSheet,
+	// This may have some duplicates becuase the SBTF team used Sahana as a data source.
+	'refugees.sahana.io-organizations': {
+		type: sourceType.urlSpreadSheet,
 		hasHeader: 1,
 		identifierIndex: 3,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1VExxd55_StCcEcWzWz8Yev3LLubOhmyE2iia1Gfm7MA/edit#gid=1955008659',
 		mappings: [
-			[0, 3], //Name
-			[1, 7], //Type
-			[2, 4], //Link
-			[3, 6], //Description
-			//not sure, skipping, [4, ] //Status
-			[5, 26] //Owner
-			//not sure, skipping, [6, ] //Notes
+			[0, 3],
+			[1, 5],
+			[2, 16],
+			[3, 12],
+			[4, 29], // 'Phone Number' append to 'Additional Info'
+			[5, 17],
+			[6, 16],
+			[7, 8],
+			[8, 1]
 		]
 	}
 };
