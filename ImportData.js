@@ -2,7 +2,8 @@ var settings = {
 	targetLanguage: 'english',
 	// I updated this to be the new spreadsheet that I've created into which we'll import the sources below
 	targetSpreadSheetUrl: 'https://docs.google.com/spreadsheets/d/1V3BUANVaLhPmoQAQOdrHebCH4_KzyJnjY99M04AMazE',
-	toProcessPath: '0B3H4lorZl65edjY0TjhxZVBZNTg'//'ToProcess'//'https://drive.google.com/open?id=0B3H4lorZl65edjY0TjhxZVBZNTg',
+	//targetSpreadSheetUrl: 'https://docs.google.com/spreadsheets/d/11el9LcYbWYX0OnnXc6_frz8ufY9eypxpMzK3pktM6Yc/edit',
+	toProcessPath: '0B3H4lorZl65edjY0TjhxZVBZNTg',//'ToProcess'//'https://drive.google.com/open?id=0B3H4lorZl65edjY0TjhxZVBZNTg',
 	processedPath: '0B3H4lorZl65eUGlpWUp5WjQ2bVk'//'Processed'//'https://drive.google.com/open?id=0B3H4lorZl65eUGlpWUp5WjQ2bVk'
 };
 
@@ -17,7 +18,10 @@ var sources = {
 	'name': {
 		pathUrl: 'http://...',
 		type: sourceType.urlSpreadSheet,
+		startRow: int, - skip x number of records from the top of the source sheet
+		identifierIndex: int, - the most unique column index in a sheet to create a unique named range for later synchronization.
 		translateFrom: 'language here',
+		sheetGID: string, //identifier for any sheets.
 		mappings: [
 			[sourceColumnIndex, destinationColumnIndex],
 			[1,1],
@@ -26,10 +30,27 @@ var sources = {
 		]
 	}
 	*/
+	'refugee-crisis-facebook-groups': {
+		type: sourceType.urlSpreadSheet,
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1VF1cFpOfaInKhIxeRECbZyPbrt1_609HUZJt_8tFWCA/edit#gid=0',
+		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		startRow: 1,
+		identifierIndex: 0,
+		mappings: [
+			[0, 2],
+			[1, 10],
+			[2, 16],
+			// [3, ], 'Group/Page', not needed
+			// [4, 29],  'Members/Likes', not needed
+			[5, 22]
+		]
+	},
 	'refugee-projects-form-responses': {
 		type: sourceType.urlSpreadSheet,
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1wYKZMMBerbWGFvwsOtra5jKt02IMwAwQDxWBurHTbSQ/edit#gid=1895427304',
 		// hasHeader: 1, // I'm not clear as to what hasHeader is indicating given the numeric value
+		//renamed hasHeader to StartRow - It is used to skip the header or x number of records on from the top of the source sheet.
+		startRow: 1,
 		identifierIndex: 0,
 		subsheet: false, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
 		mappings: [
@@ -62,23 +83,12 @@ var sources = {
 			[26, 3]
 		]
 	},
-	'refugee-crisis-facebook-groups': {
-		type: sourceType.urlSpreadSheet,
-		pathUrl: 'https://docs.google.com/spreadsheets/d/1VF1cFpOfaInKhIxeRECbZyPbrt1_609HUZJt_8tFWCA/edit#gid=0',
-		//hasHeader: 1, // I'm not clear what hasHeader is used for
-		mappings: [
-			[0, 2],
-			[1, 10],
-			[2, 16],
-			// [3, ], 'Group/Page', not needed
-			// [4, 29],  'Members/Likes', not needed
-			[5, 22]
-		]
-	},
 	'online-information-services': {
 		type: sourceType.urlSpreadSheet,
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1nLiyn86UcJChxSgd8xz4WwWpz6fZRL2NLucaSE8adPg/edit#gid=0',
 		//hasHeader: 1, // I'm not clear what hasHeader is used for
+		startRow: 1,
+		identifierIndex: 0,
 		mappings: [
 			[0, 2],
 			[1, 16], // Append to 'Tags', destinationColumnIndex 16
@@ -95,7 +105,8 @@ var sources = {
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1770681601',
 		//hasHeader: 1, // I'm not clear what hasHeader is used for
 		identifierIndex: 7,
-		subsheet: true, // I've included a boolean that indicates is a subsheet, feel free to put it elsewhere
+		//subsheet: true, // I've included a boolean that indicates is a subsheet, feel free to put it elsewhere
+		startRow: 2,
 		sheetGID: 1770681601, // I've included the GID here, feel free to place it elsewhere
 		sheetIndex: 1, // I've included the sheetIndex here, feel free to put it elsewhere
 		mappings: [
@@ -114,7 +125,8 @@ var sources = {
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=374822050',
 		//hasHeader: 1, // I'm not clear what hasHeader is used for
 		identifierIndex: 1,
-		subsheet: true, // I've included a boolean that indicates is a subsheet, feel free to put it elsewhere
+		//subsheet: true, // I've included a boolean that indicates is a subsheet, feel free to put it elsewhere
+		startRow: 4,
 		sheetGID: 374822050, // I've included the GID here, feel free to place it elsewhere
 		sheetIndex: 2, // I've included the sheetIndex here, feel free to put it elsewhere
 		mappings: [
@@ -137,7 +149,8 @@ var sources = {
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1892610775',
 		//hasHeader: 1, // I'm not clear what hasHeader is used for
 		identifierIndex: 1,
-		subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
+		//subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
+		startRow: 4,
 		sheetGID: 1892610775, // I've included the GID here, feel free to place it elsewhere
 		sheetIndex: 3, // As it currently stands, its index 3
 		mappings: [
@@ -165,9 +178,10 @@ var sources = {
 	'sbtf-daily-needs-phase-ii--social-media-sites': {
 		type: sourceType.urlSpreadSheet,
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1618921457',
+		startRow: 3,
 		//hasHeader: 1, // I'm not clear what hasHeader is used for
 		identifierIndex: 0,
-		subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
+		//subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
 		sheetGID: 1618921457, // I've included the GID here, feel free to place it elsewhere
 		sheetIndex: 4, // As it currently stands, its index 4
 		mappings: [
@@ -188,9 +202,10 @@ var sources = {
 	'sbtf-daily-needs-phase-ii--organizations': {
 		type: sourceType.urlSpreadSheet,
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1142452757',
+		startRow: 4,
 		//hasHeader: 1, // I'm not clear as to hasHeader is indicating given the numeric value
 		identifierIndex: 0,
-		subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
+		//subsheet: true, // I wasn't sure how you wanted to implement the multiple sheet data in the code, but I'm including it here for clarity
 		sheetGID: 1142452757, // I've included the GID here, feel free to place it elsewhere
 		sheetIndex: 5, // As it currently stands, its index 5
 		mappings: [
@@ -225,8 +240,8 @@ var sources = {
 	// This may have some duplicates becuase the SBTF team used Sahana as a data source.
 	'refugees.sahana.io-organizations': {
 		type: sourceType.urlSpreadSheet,
-		hasHeader: 1,
-		identifierIndex: 3,
+		startRow: 1,
+		identifierIndex: 0,
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1VExxd55_StCcEcWzWz8Yev3LLubOhmyE2iia1Gfm7MA/edit#gid=1955008659',
 		mappings: [
 			[0, 3],
@@ -242,34 +257,44 @@ var sources = {
 	}
 };
 
-var mappingTypes = {
-	Array: function(data, mapping) {
-		var text = "";
-		// I've never seen this 'ii' pattern before. What is it?
-		for(var i = 0, ii = mapping.length; i < ii; i++)
-			text += " " + data[i];
-		return text;
-	}
-	, Number: function(data, index) { return data[index]; }
-	, Function: function(data, func) { return func(data); }
+var mappingTypes = {};
+mappingTypes[[].constructor] = function(data, mapping) {
+	var text = "";
+	// I've never seen this 'ii' pattern before. What is it?
+	for(var i = 0, ii = mapping.length; i < ii; i++)
+		text += " " + data[i];
+	return text;
 };
 
+mappingTypes[(1).constructor] = function(data, index) { return data[index]; }
+mappingTypes[Function.constructor] = function(data, func) { return func(data); }
+
 function main() {
+	//CHANGE CHANGE THE KEY TO THE KEY OF THE SOURCE TO MANUALLY RUN A CERTAIN IMPORT
+	//ScriptProperties.setProperty("last_sources_key","refugees.sahana.io-organizations");
 	processFolder();
 	processSheets();
+	ScriptProperties.setProperty("last_sources_key", '');
 }
 
 function importSpreadSheet(path, sets, key) {
 	try {
 		var ssTarget = SpreadsheetApp.openByUrl(settings.targetSpreadSheetUrl);
 		var targetSheet = ssTarget.getActiveSheet();
-
-		var sourceSheet = SpreadsheetApp.openByUrl(path).getActiveSheet();
+		
+		
+		var sourceSP = SpreadsheetApp.openByUrl(path);
+		var sourceSheet = _getSheet(sourceSP, sets.sheetGID)
+		
+		if(sourceSheet == -1)
+			throw "Could not find sheet with id "+ sets.sheetGID + " in spreadsheet";
+		
+		sourceSheet = sourceSheet || sourceSP.getActiveSheet();
 		var rowCount = sourceSheet.getDataRange().getNumRows();
 		var start = 0;
 
-		if(sets.hasHeader)
-			start += sets.hasHeader;
+		if(sets.startRow)
+			start += sets.startRow;
 	} catch(e) {
 		Logger.log('importSpreadSheet failed with an error:');
 		Logger.log(e);
@@ -278,24 +303,54 @@ function importSpreadSheet(path, sets, key) {
 
 	for(var i = start, ii = rowCount; i < ii; i++) {
 		var cols = sourceSheet.getRange(i+1, 1, 1, 50);
-		var vals = cols.getDisplayValues();
-		var isEmpty = vals.join('');
-
-		if(isEmpty)
-			continue;
-
+		var vals = cols.getDisplayValues();		
+		
 		for(var x = 0, xx = vals.length; x < xx; x++) {
+			var isEmpty = vals[x].join('') == '';
+			if(isEmpty) {
+				Logger.log('found empty row');
+				continue;
+			}
+		
 			var data = _mapColumnsAndTranslate(vals[x], sets.mappings, sets.translateFrom);
-			var rangeKey = key +'_'+data[sets.identifierIndex].replace(/[^A-Za-z0-9]/gi, '_')
 			data = _clearArray(data);
 
+			var rangeKey = null;
+			var rangeKeyAppend = vals[x][sets.identifierIndex].replace(/[^A-Za-z0-9]/gi, '_') || '';
+			
+			if(rangeKeyAppend.trim() != '')
+				rangeKey = key.replace(/[^A-Za-z0-9]/gi, '_') + '_'+rangeKeyAppend;
+			
 			var range = _getRangeByNameOrIndexes(ssTarget, rangeKey, data.length);
-			ssTarget.setNamedRange(rangeKey, range);
+			
+			try {
+				if((rangeKey || '') != '')
+					ssTarget.setNamedRange(rangeKey, range);
+			} catch(e) {
+				Logger.log("Could not set ranged name due to following error:");
+				Logger.log(e);
+			}
+			
 			range.setValues([data]);
 		}
 	}
 
 	return true;
+}
+
+function _getSheet(spreadsheet, sheetid) {
+	if(sheetid == '' || sheetid == null || sheetid == undefined)
+		return null;
+	
+	var sheets = spreadsheet.getSheets();
+	for(var i = 0, ii = sheets.length; i < ii; i++) {
+		if((sheets[i].getSheetId()+'').indexOf(sheetid) == -1)
+			continue;
+		
+		return sheets[i];
+	}
+	
+	return -1;
 }
 
 function processFolder() {
@@ -313,7 +368,6 @@ function processFolder() {
 		if(!sets)
 		  continue;
 
-		Logger.log(sets);
 		if(importSpreadSheet(url, sets, sets.name)) {//SUCCESS MOVE TO PROCESSED FOLDER
 			file.makeCopy((new Date().getTime() + fileName), destFolder);
 			file.setTrashed(true);
@@ -322,17 +376,22 @@ function processFolder() {
 }
 
 function processSheets() {
-	for(var key in source) {
-		if(source[key].type != sourceType.urlSpreadSheet)
+	var startKey = ScriptProperties.getProperty("last_sources_key");
+	for(var key in sources) {
+		if(sources[key].type != sourceType.urlSpreadSheet)
 			continue;
-
-		importSpreadSheet(source[key].pathUrl, source[key], key);
+		
+		if(startKey != '' && key != startKey)
+			continue;
+		
+		ScriptProperties.setProperty("last_sources_key", key);
+		importSpreadSheet(sources[key].pathUrl, sources[key], key);
 	}
 }
 
 function _clearArray(data) {
 	for(var i = 0, ii = data.length; i < ii; i++) {
-		if(!data[i])
+		if(data[i] == null)
 			data[i] = '';
 	}
 	return data;
@@ -342,7 +401,7 @@ function _mapColumnsAndTranslate(rowData, mappings, translateFrom) {
 	var result = [];
 	for(var i = 0, ii = mappings.length; i < ii; i++) {
 		var to = mappings[i][1];
-		var text = mappingTypes[mappings[i][0].constructor](rowData, mappings[i][1]);//rowData[frm];
+		var text = mappingTypes[mappings[i][0].constructor+''](rowData, mappings[i][0]);//rowData[frm];
 
 		if(translateFrom)
 			text = LanguageApp.translate(text, translateFrom, settings.targetLanguage);
@@ -357,6 +416,7 @@ function _getSettingsByFileName(filename) {
 		if(filename.toLowerCase().indexOf(prop.toLowerCase()) != -1) {
 			var sets = sources[prop];
 			sets.name = prop;
+			ScriptProperties.setProperty("last_sources_key", prop);
 			return sets;
 		}
 	}
@@ -364,19 +424,25 @@ function _getSettingsByFileName(filename) {
 }
 
 function _getRangeByNameOrIndexes(spreadSheet, rangeName, numColumns) {
+	rangeName = rangeName || '';
 	var range = spreadSheet.getRangeByName(rangeName);
 	var sheet = spreadSheet.getActiveSheet();
-	var rows = 0;
-
-	if(range == null)
-		rows = spreadSheet.getDataRange().getNumRows()+1;
-	else {
-		rows = range.getRow();
+	
+	if(range != null) {
 		spreadSheet.removeNamedRange(rangeName);
+		range.clear();
+		sheet.deleteRow(range.getRow());
 	}
+	
+	var rows = spreadSheet.getDataRange().getNumRows()+1;
+	newRange = sheet.getRange(rows, 1, 1, numColumns);
+	return newRange;
+}
 
-	range = sheet.getRange(rows, 1, 1, numColumns);
-	return range;
+function _getFirstKeyInObj(obj) {
+	for(var prop in obj) {
+		return prop;
+	}
 }
 //DESTINATION COLUMNS
 /*
