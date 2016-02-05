@@ -1,0 +1,32 @@
+---
+Name: Refugee Projects (Form Responses)
+URL: https://docs.google.com/spreadsheets/d/1wYKZMMBerbWGFvwsOtra5jKt02IMwAwQDxWBurHTbSQ/edit#gid=1895427304
+---
+
+[0] - Timestamp
+[1] - Your Name
+[2] - Your Email
+[3] - Project Name
+[4] - Website
+[5] - Location (Un-normalized)
+[6] - Problem
+[7] - Solution?
+[8] - Fundraising?
+[9] - Contact information?
+[10] - Category
+[11] - Tags?
+[12] - Twitter URL?
+[13] - Organization?
+[14] - Additional info?
+[15] - Facebook URL
+[16] - Volunteers?
+[17] - Would you like to provide us with your name and email address?
+[18] - Do you know if this project has any social media accounts?
+[19] - LinkedIN URL
+[20] - Additional info
+[21] - Donate Info
+[22] - Donate Category
+[23] - Contact Info
+[24] - Contact Category
+[25] - Volunteer Info
+[26] - Organization Name

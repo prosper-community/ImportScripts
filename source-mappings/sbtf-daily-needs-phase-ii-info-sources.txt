@@ -1,0 +1,18 @@
+---
+Name: 1512 SBTF Daily Needs Phase II | Information Sources
+Subsheet: True
+Sheet GID: 1770681601
+Sheet Index: 1
+URL: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1770681601',
+---
+
+[columnID] - [columnName]
+
+[0] - Title
+[1] - Organization
+[2] - Type of data
+[3] - Tags
+[4] - Description
+[5] - Type of source
+[6] - Editing
+[7] - Link

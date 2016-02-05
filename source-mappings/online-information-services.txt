@@ -1,0 +1,15 @@
+---
+Name: Online Information Services
+Subsheet: False
+URL: 'https://docs.google.com/spreadsheets/d/1nLiyn86UcJChxSgd8xz4WwWpz6fZRL2NLucaSE8adPg/edit#gid=0',
+---
+
+[columnID] - [columnName]
+
+[0] - Service Name
+[1] - Type
+[2] - Link
+[3] - Description
+[4] - Status
+[5] - Owner
+[6] - Notes

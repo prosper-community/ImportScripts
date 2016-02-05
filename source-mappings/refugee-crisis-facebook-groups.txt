@@ -1,0 +1,14 @@
+---
+Name: Online Information Services
+Subsheet: False
+URL: 'https://docs.google.com/spreadsheets/d/1VF1cFpOfaInKhIxeRECbZyPbrt1_609HUZJt_8tFWCA/edit#gid=0',
+---
+
+[columnID] - [columnName]
+
+[0] - Name
+[1] - Country
+[2] - Specific Camp
+[3] - Group/Page
+[4] - Members/Likes
+[5] - Facebook URL

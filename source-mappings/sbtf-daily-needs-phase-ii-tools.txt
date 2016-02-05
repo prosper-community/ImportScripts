@@ -1,0 +1,22 @@
+---
+Name: 1512 SBTF Daily Needs Phase II | Tools
+Subsheet: True
+Sheet GID: 374822050
+Sheet Index: 2
+URL: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=374822050',
+---
+
+[columnID] - [columnName]
+
+[0] - Collection
+[1] - ID
+[2] - Date updated
+[3] - Name
+[4] - Description
+[5] - Language
+[6] - Platforms
+[7] - Twitter
+[8] - Facebook
+[9] - Web
+[10] - Android
+[11] - iPhone /iPad
