@@ -94,10 +94,8 @@ var sources = {
 			[1, 16], // Append to 'Tags', destinationColumnIndex 16
 			[2, 8],
 			[3, 7],
-			[4, 29], // Append to 'Additional Info', destinationColumnIndex 29
-			[5, 3],
-			[6, 29] // Append to 'Additional Info', destinationColumnIndex 29
-
+			[[4,6], 29], // Append to 'Additional Info', destinationColumnIndex 29
+			[5, 3]
 		]
 	},
 	'sbtf-daily-needs-phase-ii--info-sources': {
@@ -160,19 +158,20 @@ var sources = {
 			[3, 2],
 			[4, 15],
 			// [5, ], 'Free Internet' data field which is largely 'Unknown'
-			[6, 29], // 'Status' data field which is un-normalized, append to 'Additional Notes'
+			//[6, 29], // 'Status' data field which is un-normalized, append to 'Additional Notes'
 			[7, 3],
 			[8, 10],
 			[9, 11],
-			[10, 29], // 'Location' which is un-normalized, append to 'Additional Notes'
+			//[10, 29], // 'Location' which is un-normalized, append to 'Additional Notes'
 			[11, 12],
 			[12, 8],
-			[13, 29], // 'Comments' which should append to 'Additional Notes'
+			[[6, 10, 13, 14, 15, 16, 17, 18], 29]
+			/*[13, 29], // 'Comments' which should append to 'Additional Notes'
 			[14, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
 			[15, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
 			[16, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
 			[17, 29], // 'Source #' provides links to info source, append to 'Additional Notes'
-			[18, 29] // 'Source #' provides links to info source, append to 'Additional Notes'
+			[18, 29] // 'Source #' provides links to info source, append to 'Additional Notes'*/
 		]
 	},
 	'sbtf-daily-needs-phase-ii--social-media-sites': {
@@ -191,9 +190,9 @@ var sources = {
 			[3, 4],
 			[4, 7],
 			[5, 9],
-			[6, 10],
+			[[6,8], 10],
 			// [7, ], presents a 'media type' field which is useless for us
-			[8, 10],
+			//[8, 10],
 			[9, 22], // 141 of 217 entries are facebook links, we'll need to clean up the other links after import
 			// [10, ], this provides the number of 'Members/Likes', which is something we can call programatically later.
 			[11, 29] // Provides a 'status' field, which isn't useful for us now but is good to maintain in our 'Additional notes'
@@ -221,20 +220,20 @@ var sources = {
 			[9, 9],
 			[10, 11],
 			[11, 12],
-			[12, 29], // destinationColumnIndex 29 is the catch all 'Additional Info'. Should be appended, not overwritten
-			[13, 29], // destinationColumnIndex 29 is the catch all 'Additional Info'. Should be appended, not overwritten
+			[[12,13], 29], // destinationColumnIndex 29 is the catch all 'Additional Info'. Should be appended, not overwritten
+			//[13, 29], // destinationColumnIndex 29 is the catch all 'Additional Info'. Should be appended, not overwritten
 			[14, 21],
 			[15, 22],
 			[16, 24],
 			[17, 8],
-			[18, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
-			[19, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
+			[[18,19,20,21,22,23,24,25], 31] // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
+			/*[19, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
 			[20, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
 			[21, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
 			[22, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
 			[23, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
 			[24, 31], // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
-			[25, 31]  // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten
+			[25, 31]  // destinationColumnIndex 31 is 'Additional Countries'. Should be appended and comma delimited, not overwritten*/
 		]
 	},
 	// This may have some duplicates becuase the SBTF team used Sahana as a data source.
@@ -246,11 +245,11 @@ var sources = {
 		mappings: [
 			[0, 3],
 			[1, 5],
-			[2, 16],
+			[[2,6], 16],
 			[3, 12],
 			[4, 29], // 'Phone Number' append to 'Additional Info'
 			[5, 17],
-			[6, 16],
+			//[6, 16],
 			[7, 8],
 			[8, 1]
 		]
@@ -262,7 +261,8 @@ mappingTypes[[].constructor] = function(data, mapping) {
 	var text = "";
 	// I've never seen this 'ii' pattern before. What is it?
 	for(var i = 0, ii = mapping.length; i < ii; i++)
-		text += " " + data[i];
+		text += " " + data[mapping[i]];
+
 	return text;
 };
 
@@ -386,6 +386,7 @@ function processSheets() {
 		
 		ScriptProperties.setProperty("last_sources_key", key);
 		importSpreadSheet(sources[key].pathUrl, sources[key], key);
+		//break;
 	}
 }
 
