@@ -1,0 +1,36 @@
+---
+Name: 1512 SBTF Daily Needs Phase II | Organizations
+Subsheet: True
+Sheet GID: 1142452757
+Sheet Index: 5
+URL: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1142452757',
+---
+
+[columnID] - [columnName]
+
+[0] - ID
+[1] - Source Dataset
+[2] - Timestamp
+[3] - Organization Name
+[4] - English Name
+[5] - Org Type
+[6] - Service Description
+[7] - Service type
+[8] - Service country
+[9] - Language(s)
+[10] - Service town(s)
+[11] - Address
+[12] - Describe ICT capacities
+[13] - Source type
+[14] - Twitter
+[15] - Facebook
+[16] - Instagram
+[17] - Website
+[18] - Notes
+[19] - Additional country 1
+[20] - Additional country 2
+[21] - Additional country 3
+[22] - Additional country 4
+[23] - Additional country 5
+[24] - Additional country 6
+[25] - Additional country 7

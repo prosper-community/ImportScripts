@@ -1,0 +1,29 @@
+---
+Name: 1512 SBTF Daily Needs Phase II | Facilities
+Subsheet: True
+Sheet GID: 1892610775
+Sheet Index: 3
+URL: 'https://docs.google.com/spreadsheets/d/1C9fmpzb3VhoGOsCnRAnhbXZNkKd3sVZIN0Ha1VOBQjk/edit#gid=1892610775',
+---
+
+[columnID] - [columnName]
+
+[0] - Source Dataset
+[1] - ID
+[2] - Last Updated
+[3] - Name
+[4] - Facility Type
+[5] - Free Internet
+[6] - Status
+[7] - Organization
+[8] - Country
+[9] - City/Area
+[10] - Location
+[11] - Address
+[12] - Website
+[13] - Comments
+[14] - Source1
+[15] - Source2
+[16] - Source3
+[17] - Source4
+[18] - Source5

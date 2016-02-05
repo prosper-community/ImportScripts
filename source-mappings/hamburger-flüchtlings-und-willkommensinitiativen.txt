@@ -1,0 +1,18 @@
+---
+Name: Hamburger Flüchtlings- und Willkommensinitiativen
+
+Subsheet: False
+URL: 'https://docs.google.com/spreadsheets/d/1tTEQT2bBv2HsTI-Zjpde2me5x3fWrWpxLq_WXWLJBEI/edit#gid=0',
+---
+
+[columnID] - [columnName]
+
+[0] - District
+[1] - Part of Town
+[2] - Service Type
+[3] - Facility
+[4] - Initiative Name
+[5] - Facebook URL
+[6] - Website
+[7] - Email
+[8] - Notes

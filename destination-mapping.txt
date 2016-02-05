@@ -1,0 +1,40 @@
+---
+Name: RefugeeProjects.com (Database)
+URL: https://docs.google.com/spreadsheets/d/1V3BUANVaLhPmoQAQOdrHebCH4_KzyJnjY99M04AMazE/edit#gid=0
+---
+
+[columnID] - columnName
+
+[0] - ID
+[1] - Timestamp
+[2] - Project Name
+[3] - Organization Name
+[4] - English Name
+[5] - Organization Type
+[6] - Problem
+[7] - Solution
+[8] - Website
+[9] - Language(s)
+[10] - Country
+[11] - City / Town(s)
+[12] - Address
+[13] - Latitude
+[14] - Longitude
+[15] - Category
+[16] - Tags
+[17] - Contact Info
+[18] - Contact Category
+[19] - Donate Info
+[20] - Donate Category
+[21] - Twitter URL
+[22] - Facebook URL
+[23] - LinkedIN URL
+[24] - Instagram URL
+[25] - Fundraising?
+[26] - Volunteers?
+[27] - Volunteer Needs
+[28] - Source Dataset
+[29] - Additional Info
+[30] - Added by (name)
+[31] - Added by (email)
+[32] - Additional Countries
