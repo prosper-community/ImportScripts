@@ -1,6 +1,6 @@
 var settings = {
 	targetLanguage: 'english',
-	targetSpreadSheetUrl: 'https://docs.google.com/spreadsheets/d/1LH_sLA8EUfsSOA07H0bPIpgheaOTMRmi5jAct6zBFn8/',
+	targetSpreadSheetUrl: 'https://docs.google.com/spreadsheets/d/1V3BUANVaLhPmoQAQOdrHebCH4_KzyJnjY99M04AMazE/',
 	toProcessPath: '0B3H4lorZl65edjY0TjhxZVBZNTg',
 	processedPath: '0B3H4lorZl65eUGlpWUp5WjQ2bVk'
 };
