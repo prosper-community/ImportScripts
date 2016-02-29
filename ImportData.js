@@ -18,38 +18,34 @@ var sources = {
 		identifierIndex: 0,
 		mappings: [
 			[0, 1], // Timestamp
-			[1, 31], // What is your full name?
-			[2, 32], // What is your email address?
+			[1, 30], // What is your full name?
+			[2, 31], // What is your email address?
 			[3, 2], // What is the name of the project?
 			[4, 8], // What is the project's website? (if applicable)
-			[5, 10], //?? Where is this project located? -> Street Address *Only 1 field, database has 3 fields
+			[5, 10], //?? Where is this project located?
 			[6, 6], // What is the problem that this project solves?
 			[7, 7], // What is this project's solution?
-			[8, 26], //?? Do you know if this project is currently fundraising? -> Fundraising? *Does these columns match?
-			[10, 16], // Which single category best describes this project?
-			[11, 17], // Which tags best describe this project?
-			[12, 22], // If this project has a Twitter profile, what is the URL?
-			[13, 3], // Is the project apart of a bigger organization?
-			[14, 31], // Is there any additional information you'd like to provide?
-			[15, 23], // If this project has a Facebook page, what is the URL?
-			[16, 27], // Do you know if this project needs volunteers? -> Volunteers?
-			[19, 24], // If this project has a LinkedIN page, what is the URL?
-			[20, 30], // What is the additional information you'd like to provide?
-			[21, 20], // What is the best way to donate to the project?
-			[22, 21], // What is the category of the donation method you provided above?
-			[23, 18], // What is the best way to contact the project?
-			[24, 19], // What is the category that describes the contact information you provided above?
-			[25, 28], // What kind of volunteers does this project need?
+			[10, 15], // Which single category best describes this project?
+			[11, 16], // Which tags best describe this project?
+			[12, 21], // If this project has a Twitter profile, what is the URL?
+			[15, 22], // If this project has a Facebook page, what is the URL?
+			[19, 23], // If this project has a LinkedIN page, what is the URL?
+			[20, 29], // What is the additional information you'd like to provide?
+			[21, 19], // What is the best way to donate to the project?
+			[22, 20], // What is the category of the donation method you provided above?
+			[23, 17], // What is the best way to contact the project?
+			[24, 18], // What is the category that describes the contact information you provided above?
+			[25, 27], // What kind of volunteers does this project need?
 			[26, 3] // What is the name of the organization which runs the project?
 		]
 	},
-	'for-good': {
+	'calaid-ipedia': {
 		type: sourceType.urlSpreadSheet,
-		pathUrl: 'https://docs.google.com/spreadsheets/d/1R1CBAbWLtFU1WdLJunsVhhJQlioniL2Llb3KFeNhwdY/',
+		pathUrl: 'https://docs.google.com/spreadsheets/d/1A5wDMgmddNalWB77dlqWIvl1X-dYBrU-7x3mGBkBkDc/',
 		startRow: 1,
-		identifierIndex: 0, // id
+		identifierIndex: 3, // Name
 		mappings: [
-			[0, 0], // id
+			[0, 0], // Country
 			[1, 2], // Project Name
 			[2, 8], // URL
 			[3, 7], // Solution
