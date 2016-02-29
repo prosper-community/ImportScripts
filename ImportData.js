@@ -59,25 +59,6 @@ var sources = {
 			[7, 16], // Category
 			[8, 17] // Tag
 		]
-	},
-	'bll-balkan-link-library': {
-		type: sourceType.urlSpreadSheet,
-		pathUrl: 'https://docs.google.com/spreadsheets/d/1tPU8dsw0w-60rC06UZ9qZtvaFbY6Q2BuolEqY8Xiwf0/',
-		startRow: 1,
-		identifierIndex: 2, // Project Name
-		mappings: [
-			[0, 11], // City
-			[1, 12], // Country
-			[2, 2], // Project
-			[3, 8], // URL
-			[4, 7], // About
-			[5, 16], // Category
-			[6, 17], // Tags
-			[7, 23], // Facebook
-			[8, 22], // Twitter
-			[9, 9], // Langauge
-			[10, 18] // Email
-		]
 	}
 };
 
