@@ -14,7 +14,7 @@ var sources = {
 	'refugee-projects-form-responses': {
 		type: sourceType.urlSpreadSheet,
 		pathUrl: 'https://docs.google.com/spreadsheets/d/1wYKZMMBerbWGFvwsOtra5jKt02IMwAwQDxWBurHTbSQ/',
-		startRow: 1,
+		startRow: 132,
 		identifierIndex: 0,
 		mappings: [
 			[0, 1], // Timestamp
@@ -37,38 +37,6 @@ var sources = {
 			[24, 18], // What is the category that describes the contact information you provided above?
 			[25, 27], // What kind of volunteers does this project need?
 			[26, 3] // What is the name of the organization which runs the project?
-		]
-	},
-	'calaid-ipedia': {
-		type: sourceType.urlSpreadSheet,
-		pathUrl: 'https://docs.google.com/spreadsheets/d/1A5wDMgmddNalWB77dlqWIvl1X-dYBrU-7x3mGBkBkDc/',
-		startRow: 1,
-		identifierIndex: 4, // Name
-		mappings: [
-			[0, 12], // Country
-			[1, 11], // City
-			[2, 10], // Address
-			[3, 8], // Website
-			[4, 2], // Project Name
-			[5, 7], // Description
-			[6, 15], // Category
-			[7, 16], // Tags
-			[8, 22] // Facebook
-		]
-	},
-	'digital-refugee-projects-betterplace-lab': {
-		type: sourceType.urlSpreadSheet,
-		pathUrl: 'https://docs.google.com/spreadsheets/d/1t82LzxBH5GL2HOnEySZE6irLXLAI6rogJ-r8Cf573yo/',
-		startRow: 1,
-		identifierIndex: 0, // Name
-		mappings: [
-			[0, 12], // Name
-			[1, 12], // Country
-			[2, 8], // Website
-			[3, 7], // Description
-			[5, 15], // Type
-			[6, 29], // Category (German)
-			[10, 3] // Organization
 		]
 	}
 };
