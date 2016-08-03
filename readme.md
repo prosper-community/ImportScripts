@@ -1,4 +1,5 @@
 # ImportScripts
+
 This is a Google Apps script that can be uploaded to Google Sheets via 'Script Editor'.
 
 The purpose of this script is to upload external data sets to the [RefugeeProjects.com database](https://docs.google.com/spreadsheets/d/1V3BUANVaLhPmoQAQOdrHebCH4_KzyJnjY99M04AMazE/edit#gid=0).  External data sources can either be included as a URL or within a specified Google Drive folder.
@@ -23,9 +24,12 @@ var sources = {
 
 You can also add a helper file to `source-mappings` and name it according to the name of the data set. The structure of source-mappings is as follows:
 
+```
 ---
 Name: Source Name
+Subsheet: False
 URL: 'https://docs.google.com/spreadsheets/d/#YOUR-ID-HERE',
+Date: <date>
 ---
 
 [columnID] - [columnName]
@@ -39,5 +43,14 @@ URL: 'https://docs.google.com/spreadsheets/d/#YOUR-ID-HERE',
 [6] - Website
 [7] - Email
 [8] - Notes
+```
+
+Alternatively, the header may contain something like the following:
+
+```
+Subsheet: True
+Sheet GID: <number>
+Sheet Index: <number>
+```
 
 Please make a new branch if you'd like to add any data sources to the `ImportData.js` script for import to the [RefugeeProjects.com database](https://docs.google.com/spreadsheets/d/1V3BUANVaLhPmoQAQOdrHebCH4_KzyJnjY99M04AMazE/edit#gid=0).
